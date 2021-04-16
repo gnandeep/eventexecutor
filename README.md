@@ -4,7 +4,7 @@ Event Executor is a Java library for triggering one time events and periodic eve
 
 ## Installation
 
---working to updating jar to maven central repository.
+--working on updating jar to maven central repository.
 
 
 
