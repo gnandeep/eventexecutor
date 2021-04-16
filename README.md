@@ -21,7 +21,7 @@ class EventExecutorTest {
 		String message = "Time: ";
 		System.out.println(message + System.currentTimeMillis());
 		try {
-			new EventExecutorBuilder("Test1").setDelay(5).build().runAsync(message, new Consumer<String>() {
+			new EventExecutorBuilder("Test1").setDelay(5).buildAsync().run(message, new Consumer<String>() {
 
 				@Override
 				public void accept(String t) {
@@ -30,7 +30,6 @@ class EventExecutorTest {
 				}
 			});
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
