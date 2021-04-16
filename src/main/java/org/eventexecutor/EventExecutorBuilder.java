@@ -66,20 +66,38 @@ public class EventExecutorBuilder {
 	 * 
 	 * @return EventExecutor on which tasks can be executed.
 	 */
-	public EventExecutor build() {
+	public AsynchronousEventExecutor buildAsync() {
 
-		EventExecutor EventExecutor = new EventExecutor(processName);
+		AsynchronousEventExecutor eventExecutor = new AsynchronousEventExecutor(processName);
 
-		EventExecutor.setDelay(this.delay);
+		eventExecutor.setDelay(this.delay);
 
-		EventExecutor.setThreadPoolSize(threadPoolSize);
+		eventExecutor.setThreadPoolSize(threadPoolSize);
 
 		if (this.daemonProcess) {
-			EventExecutor.setDaeomon(true);
-			EventExecutor.setPeriodicRun(this.periodicRun);
+			eventExecutor.setDaeomon(true);
 		}
 
-		return EventExecutor;
+		eventExecutor.setPeriodicRun(this.periodicRun);
+
+		return eventExecutor;
+	}
+
+	/**
+	 * Builder that will take all the configurations into consideration and return
+	 * the final EventExecutor object.
+	 * 
+	 * @return EventExecutor on which tasks can be executed.
+	 */
+	public SynchronousEventExecutor buildSync() {
+
+		SynchronousEventExecutor eventExecutor = new SynchronousEventExecutor(processName);
+
+		eventExecutor.setDelay(this.delay);
+
+		eventExecutor.setThreadPoolSize(threadPoolSize);
+
+		return eventExecutor;
 	}
 
 }
